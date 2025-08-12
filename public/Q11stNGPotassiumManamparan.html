@@ -1,16 +1,28 @@
 <!DOCTYPE HTML>
 <HTML>
 <body style="background-color:darkblue;">
+    <form>
+        <label for="age">Present Age:</label>
+        <input type="number" id="age" name="age"> <br>
+        <label for="maxAge">Maximum Age:</label>
+        <input type="number" id="maxAge" name="maxAge"> <br>
+        <label for="food">Food/Drink:</label>
+        <input type="text" id="food" name="food"> <br>
+        <label for="numPerDay">Number per Day:</label>
+        <input type="number" id="numPerDay" name="numPerDay"> <br>
+    </form>
+    <button onclick="results()">Submit</button>
     <script style="color: red; font-size:larger;">
-        let age = window.prompt("What is your age today?", "");
-        let maxAge = window.prompt("Unil what age do you expect to live?", "");
-        let food = window.prompt("What food do you love the most?", "");
-        let numPerDay = window.prompt("How much food do you eat?", "");
-        let sure = window.confirm("Are you sure you inputted everything correctly?" + "\nAge: " + age + "\nmaxAge: " + maxAge + "\nFood: " + food + "\nNo. per day: " + numPerDay)
-        let totalRequired = (numPerDay * 365) * (maxAge - age);
-        if (sure) {
-            document.write("You will need " + totalRequired + " " + food + " to last you until the age of " + maxAge + "."); }
-        else {document.write("retry again.")};
+        function results() {
+            var age = document.getElementById("age").value;
+            var maxAge = document.getElementById("maxAge").value;
+            var food = document.getElementById("food").value;
+            var numPerDay = document.getElementById("numPerDay").value;
+            var sure = window.confirm("Are you sure you inputted everything correctly?" + "\nAge: " + age + "\nmaxAge: " + maxAge + "\nFood: " + food + "\nNo. per day: " + numPerDay)
+            var totalRequired = (numPerDay * 365) * (maxAge - age);
+            if (sure) {
+                document.write("You will need " + totalRequired + " " + food + " to last you until the age of " + maxAge + "."); }
+            else {document.write("retry again.")};}
     </script>
 </body>
 </HTML>
