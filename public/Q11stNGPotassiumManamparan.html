@@ -2,12 +2,12 @@
 <HTML>
 <body style="background-color:darkblue;">
     <script style="color: red; font-size:larger;">
-        var age = window.prompt("What is your age today?", "14");
-        var maxAge = window.prompt("Unil what age do you expect to live?", "76");
-        var food = window.prompt("What food do you love the most?", "yema triangles");
-        var numPerDay = window.prompt("How much food do you eat?", "10");
-        var sure = window.confirm("Are you sure you inputted everything correctly?")
-        var totalRequired = (numPerDay * 365) * (maxAge - age);
+        let age = window.prompt("What is your age today?", "14");
+        let maxAge = window.prompt("Unil what age do you expect to live?", "76");
+        let food = window.prompt("What food do you love the most?", "yema triangles");
+        let numPerDay = window.prompt("How much food do you eat?", "10");
+        let sure = window.confirm("Are you sure you inputted everything correctly?")
+        let totalRequired = (numPerDay * 365) * (maxAge - age);
         if (sure) {
             document.write("You will need " + totalRequired + " " + food + "to last you until the age of " + maxAge + "."); }
         else {document.write("retry again.");}
