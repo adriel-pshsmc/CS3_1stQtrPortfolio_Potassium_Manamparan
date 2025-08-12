@@ -3,10 +3,10 @@
 <body style="background-color:darkblue;">
     <script style="color: red; font-size:larger;">
         var age, maxAge, numPerDay, food, sure;
-        age = window.prompt("What is your age today?");
-        maxAge = window.prompt("Unil what age do you expect to live?");
-        food = window.prompt("What food do you love the most?");
-        numPerDay = window.prompt("How much food do you eat?");
+        age = window.prompt("What is your age today?", "14");
+        maxAge = window.prompt("Unil what age do you expect to live?", "76");
+        food = window.prompt("What food do you love the most?", "yema triangles");
+        numPerDay = window.prompt("How much food do you eat?", "10");
         sure = window.confirm("Are you sure you inputted everything correctly?")
         var totalRequired = (numPerDay * 365) * (maxAge - age);
         if (sure) {
