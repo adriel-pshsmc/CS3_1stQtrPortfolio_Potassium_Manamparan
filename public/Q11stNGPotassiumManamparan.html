@@ -2,11 +2,17 @@
 <HTML>
 <body style="background-color:darkblue;">
     <script style="color: red; font-size:larger;">
-        var age = 14;
-        var maxAge = 76;
-        var numPerDay = 10;
+        var age, maxAge, numPerDay, food, sure;
+        age = window.prompt("What is your age today?");
+        maxAge = window.prompt("Unil what age do you expect to live?");
+        food = window.prompt("What food do you love the most?");
+        numPerDay = window.prompt("How much food do you eat?");
+        sure = window.confirm("Are you sure you inputted everything correctly?")
         var totalRequired = (numPerDay * 365) * (maxAge - age);
-        document.write("You will need " + totalRequired + " yema triangles to last you until the age of " + maxAge + ".");
+        if (sure) {
+            document.write("You will need " + totalRequired + " " + food + "to last you until the age of " + maxAge + "."); }
+        else {document.write("retry again.")}
+    
     </script>
 </body>
 </HTML>
