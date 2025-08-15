@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<HTML>
+<body style="background-color:darkblue; color: red">
+    <h2>Q1 2nd Graded Exercise submitted by:</h2>
+    <h2><i>Manamparan, Adriel Lenard of Potassium</i></h2>
+        
+    <div>Meal Price: </div>
+    <input type="number" id="mealPrice" name="mealPrice"> <br><br>
+
+    <div>Tip: </div>
+    <input type="number" id="totalTip" name="totalTip"> <br><br>
+
+    <div>Service Charge: </div>
+    <input type="text" id="serviceCharge" name="serviceCharge"> <br><br>
+
+    <button type="button" onclick="totalMeal()">Accept Input</button>
+    <br>
+
+    <script style="color: red; font-size:larger;">
+        var price = document.getElementById("mealPrice").value;
+        var tip = document.getElementById("totalTip").value;
+        var charge = document.getElementById("serviceCharge").value;
+        var totalPrice ;
+        totalPrice = price.value + ((price / 100) * charge) + tip.value;
+        totalPrice = totalPrice.toFixed(2);
+
+        function totalMeal() {
+            var sure = window.confirm("Are you sure you inputted everything correctly?" + "\nMeal Price: " + price.value + "\nTip: " + tip.value + "\nService Charge: " + charge.value)
+            
+            if (sure) {
+                document.write("Total Meal: " + totalPrice); }
+            else {window.alert("retry again.")};}
+    </script>
+</body>
+</HTML>
