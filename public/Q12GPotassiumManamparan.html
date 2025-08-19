@@ -17,19 +17,14 @@
     <br>
 
     <script style="color: red; font-size:larger;">
-        var price;
-        var tip;
-        var charge;
-        var totalPrice;
-        
-        price = document.getElementById("mealPrice").value;
-        tip = document.getElementById("totalTip").value;
-        charge = document.getElementById("serviceCharge").value;
-        totalPrice = price.value + ((price / 100) * charge) + tip.value;
+        const price = document.getElementById("mealPrice").value;
+        const tip = document.getElementById("totalTip").value;
+        const charge = document.getElementById("serviceCharge").value;
+        const totalPrice = price + ((price / 100) * charge) + tip;
         totalPrice = totalPrice.toFixed(2);
 
         function totalMeal() {
-            var sure = window.confirm("Are you sure you inputted everything correctly?" + "\nMeal Price: " + price.value + "\nTip: " + tip.value + "\nService Charge: " + charge.value)
+            var sure = window.confirm("Are you sure you inputted everything correctly?" + "\nMeal Price: " + price + "\nTip: " + tip + "\nService Charge: " + charge)
             
             if (sure) {
                 document.write("Total Meal: " + totalPrice); }
