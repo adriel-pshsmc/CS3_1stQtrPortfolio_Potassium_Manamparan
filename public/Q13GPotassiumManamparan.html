@@ -1,35 +1,34 @@
 <!DOCTYPE HTML>
 <HTML>
 <body>
-    <h2>Q1 2nd Graded Exercise submitted by:</h2>
+    <h2>Q1 3nd Graded Exercise submitted by:</h2>
     <h2><i>Manamparan, Adriel Lenard of Potassium</i></h2>
         
-    <div>Meal Price: </div>
-    <input type="number" id="mealPrice" name="mealPrice"> <br><br>
+    <div>Guess the Number: ****</div>
+    <div>This number is from 1 to 100</div>
+    <div>Enter your Guess: </div>
+    <input type="number" id="guess" name="guess"> <br><br>
 
-    <div>Tip: </div>
-    <input type="number" id="totalTip" name="totalTip"> <br><br>
-
-    <div>Service Charge: </div>
-    <input type="text" id="serviceCharge" name="serviceCharge"> <span>%</span> <br><br>
-
-    <button type="button" onclick="totalMeal()">Accept Input</button>
+    <button type="button" onclick="checkIt()">Accept Input</button>
     <br>
 
-    <script style="color: black; font-size:larger;">
-        function totalMeal() {
-            var price = parseFloat(document.getElementById('mealPrice').value);
-            var tip = parseFloat(document.getElementById('totalTip').value);
-            var charge = parseFloat(document.getElementById('serviceCharge').value);
-            console.log(`Price: ${price} \n tip: ${tip} \n charge: ${charge}`);
-            var totalPrice = price + ((price / 100) * charge) + tip;
-            console.log(totalPrice);
-            totalPrice = totalPrice.toFixed(2);
-            var sure = window.confirm("Are you sure you inputted everything correctly?" + "\nMeal Price: " + price + "\nTip: " + tip + "\nService Charge: " + charge)
+    <script style="font-size:larger;">
+    var dNumber = Math.floor(Math.random() * 100) + 1;    
+        function checkIt() {
+            var guess = parseFloat(document.getElementById('guess').value);
+            var sure = window.confirm("Are you sure you inputted everything correctly?\n" + guess);
             
             if (sure) {
-                document.write("Total Meal: " + totalPrice); }
-            else {window.alert("retry again.")};}
+                if (guess == dNumber && guess <= 100 && guess >= 1) {
+                    document.write("You are correct!");
+                } else if (guess < dNumber && guess <= 100 && guess >= 1) {
+                    document.write("Higher");
+                } else if (guess > dNumber && guess <= 100 && guess >= 1) {
+                    document.write("Lower");
+                } else {
+                    document.write("Invalid input. Please enter a number between 1 and 100.");
+                } }
+            else (window.alert("retry again."));}
     </script>
 </body>
 </HTML>
