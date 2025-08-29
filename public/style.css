@@ -1,0 +1,59 @@
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: lightblue;
+    border: 10px;
+    font-family: 'Times New Roman', Times, serif;
+  }  
+.card {
+    width: 200px;
+    padding: 1em;
+    border: 2px solid #333;
+    border-radius: 10px;
+    text-align: center;
+    color: lightcoral;
+    font-family: 'Times New Roman', Times, serif;
+  }
+.card:hover {
+    background-color: #f0f0f0;
+  }
+.emoji {
+    font-size: 3rem;
+  }
+.grid {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+  }
+.profile {
+    border: 1px solid #ccc;
+    padding: 1em;
+    width: 200px;
+    text-align: center;
+  }
+.profile img {
+    width: 100%;
+    border-radius: 50%;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background-color: #4a90e2;
+    color: white;
+    padding: 2em;
+    text-align: center;
+  }
+  section {
+    padding: 1.5em;
+  }
+  footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #eee;
+  }
+  
+  
