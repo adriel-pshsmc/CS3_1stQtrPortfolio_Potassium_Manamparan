@@ -20,13 +20,13 @@
             
             if (sure) {
                 if (guess == dNumber && guess <= 100 && guess >= 1) {
-                    document.write("You are correct!");
+                    document.prompt("You are correct!");
                 } else if (guess < dNumber && guess <= 100 && guess >= 1) {
-                    document.write("Higher");
+                    document.prompt("Higher");
                 } else if (guess > dNumber && guess <= 100 && guess >= 1) {
-                    document.write("Lower");
+                    document.prompt("Lower");
                 } else {
-                    document.write("Invalid input. Please enter a number between 1 and 100.");
+                    document.prompt("Invalid input. Please enter a number between 1 and 100.");
                 } }
             else (window.alert("retry again."));}
     </script>
