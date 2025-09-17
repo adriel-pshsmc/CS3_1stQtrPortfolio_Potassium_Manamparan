@@ -16,19 +16,20 @@
     var dNumber = Math.floor(Math.random() * 100) + 1;    
         function checkIt() {
             var guess = parseFloat(document.getElementById('guess').value);
-            var sure = window.confirm("Are you sure you inputted everything correctly?\n" + guess);
             
-            if (sure) {
-                if (guess == dNumber && guess <= 100 && guess >= 1) {
-                    document.write("You are correct!");
-                } else if (guess < dNumber && guess <= 100 && guess >= 1) {
-                    document.write("Higher");
-                } else if (guess > dNumber && guess <= 100 && guess >= 1) {
-                    document.write("Lower");
-                } else {
-                    document.write("Invalid input. Please enter a number between 1 and 100.");
-                } }
-            else (window.alert("retry again."));}
+            if (guess == dNumber && guess <= 100 && guess >= 1) {
+                document.getElementById("answer").innerHTML = "Correct!"
+            } else if (guess < dNumber && guess <= 100 && guess >= 1) {
+                document.getElementById("answer").innerHTML = "Higher!"
+            } else if (guess > dNumber && guess <= 100 && guess >= 1) {
+                document.getElementById("answer").innerHTML = "Lower!"
+            } else {
+                document.getElementById("answer").innerHTML = "Invalid input. Please enter a number between 1 and 100.";
+            }
+        }
     </script>
+
+    <br>
+    <h3>Answer: <i id="answer"></i></h3>
 </body>
 </HTML>
