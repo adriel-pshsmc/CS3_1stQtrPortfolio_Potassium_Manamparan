@@ -1,35 +1,78 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <h1> Welcome to Adriel's Wordle!</h1>
-    <h2> Choose a word, keep guessing, and see if it's right or wrong. </h2>
-    <br>
-    <div style="font-size: 1.5rem;">Select a word:</div> <br>
-    <button onclick="FirstWord()">First Word</button>
-    <br>
-    <button onclick="SecondWord()">Second Word</button>
-    <br>
-    <button onclick="ThirdWord()">Third Word</button>
-    <h3> Word Choices: </h3>
-    <form>
-    <div style="font-size: 1.5rem;">Guess:</div> 
-    <input type="string" id="guess" name="guess"> <br> <br>
-    </form>
-    <div style="font-size: 1.5rem;" id="guesses">Guesses:</div>
+<div>
+    <h1 style="text-align: center;">  Welcome to Adriel's Wordo-Guessr!</h1>
+    <h2 style="text-align: center;"> Choose a word, keep guessing, and see if it's right or wrong. </h2>
+
+    <div style="text-align: center;">
+        <h4 style="text-align: center;" style="font-size: 1.5rem;"><i>Select a Game Mode:</i></h4>
+        <button style="height: 40px; width: 120px;" onclick="Wordle()">Wordle</button>
+        <br> <br>
+        <button style="height: 40px; width: 120px;" onclick="Hangman()">Hangman</button>
+        <br> <p>------------------------------</p>
+        <button style="height: 40px; width: 120px;" onclick="Limited()">Limited Guesses</button>
+        <br> <br>
+        <button style="height: 60px; width: 120px;" onclick="Unli()">Unlimited Guesses</button>
+    </div>
+    
+    <div style="text-align: center;">
+        <h4 style="text-align: center;" style="font-size: 1.5rem;"><i>Select a word:</i></h4>
+        <button style="height: 40px; width: 120px;" onclick="WordNo1()">First Word</button>
+        <br> <br>
+        <button style="height: 40px; width: 120px;" onclick="WordNo2()">Second Word</button>
+        <br> <br>
+        <button style="height: 40px; width: 120px;" onclick="WordNo3()">Third Word</button>
+    </div>
 
     <br>
-    <div style="font-size: 1.5rem;">Word: </div>
+    <h4 style="text-align: center;" style="font-size: 1.5rem;">Word: </h4>
+    <p style="text-align: center;" id="display"> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> </p> 
+
+    <div style="text-align: center;">
+        <h4 style="text-align: center;" style="font-size: 1.5rem;">Guess:</h4> 
+        <input type="string" id="guesss" name="guess"> <br> <br>
+        <input type="submit">
+        <p style="text-align: center;" id="guess"></p>
+    </div>
+    
+    <h4 style="text-align: center;" style="font-size: 1.5rem;">Guesses:</h4>
+    <br>
+    <p style="text-align: center;" id="guesses"></p>
+</div>
 </body>
 <script>
-    lastG = document.getElementById("guess").value;
-    document.getElementById("lastGuess") = `Last Guess: ${lastG}`;
-    function FirstWord() {
+    var gameMode = "Wordle";
+    var amtGuesses = "Unli";
+    var wordNo = "First";
+    var display = "<u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u>";
+    var secretWord = ["P", "o", "t", "a", "s", "s", "i", "u", "m", " ", "A", "d", "r", "i", "e", "l"]
+    var secretWordString = secretWord.join("");
+
+    document.getElementById("display").innerHTML = secretWordString;
+
+    function Hangman() {
+        gameMode = "Hangman";
+    }
+
+    function Wordle() {
+        gameMode = "Wordle";
+    }
+    function Limited() {
+        amtGuesses = "Limited";
+    }
+
+    function Unli() {
+        amtGuesses = "Unlimited";
+    }
+
+    function WordNo1() {
         //Word: Potassium Adriel
     }
-    function SecondWord() {
+    function WordNo2() {
         //Word: Champaca Adriel
     }
-    function ThirdWord() {
+    function WordNo3() {
         //Word: Pisay Adriel
     }
 </script>
