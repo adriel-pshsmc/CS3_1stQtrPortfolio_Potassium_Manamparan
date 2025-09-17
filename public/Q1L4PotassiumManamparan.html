@@ -48,6 +48,8 @@
     var display = "<u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u> <u>_</u>";
     var secretWord = ["P", "o", "t", "a", "s", "s", "i", "u", "m", " ", "A", "d", "r", "i", "e", "l"]
     var secretWordString = secretWord.join("");
+    var wordLength = secretWordString.length;
+    var guessesLeft = 8;
 
     document.getElementById("display").innerHTML = secretWordString;
 
