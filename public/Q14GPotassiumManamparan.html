@@ -1,0 +1,44 @@
+<script>
+process.stdin.on('data', input => {
+
+    let greeting = input.toString().trim();
+  
+    for (i = 0; i < 7; i++) {
+      switch (i) {
+          case 0:
+              if (greeting == "HELLO" || greeting == "hello")
+                  console.log("ENGLISH");
+              break;
+          case 1:
+              if (greeting == "MABUHAY" || greeting == "mabuhay")
+                  console.log("TAGALOG");
+              break;
+          case 2:
+              if (greeting == "HOLA" || greeting == "hola")
+                  console.log("SPANISH");
+              break;
+          case 3:
+              if (greeting == "HALLO" || greeting == "hallo")
+                  console.log("GERMAN");
+              break;
+          case 4:
+              if (greeting == "BONJOUR" || greeting == "bonjour")
+                  console.log("FRENCH");
+              break;
+          case 5:
+              if (greeting == "CIAO" || greeting == "ciao")
+                  console.log("ITALIAN");
+              break;
+          case 6:
+              if (greeting == "ZDRAVSTUJTE" || greeting == "zdravstujte")
+                  console.log("RUSSIAN");
+              break;
+          default:
+              console.log("UNKNOWN");
+              break;
+  } }
+  
+    process.exit();
+  
+  });
+</script>

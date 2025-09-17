@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1> Welcome to Adriel's Wordle!</h1>
+    <h2> Choose a word, keep guessing, and see if it's right or wrong. </h2>
+    <br>
+    <div style="font-size: 1.5rem;">Select a word:</div> <br>
+    <button onclick="FirstWord()">First Word</button>
+    <br>
+    <button onclick="SecondWord()">Second Word</button>
+    <br>
+    <button onclick="ThirdWord()">Third Word</button>
+    <h3> Word Choices: </h3>
+    <form>
+    <div style="font-size: 1.5rem;">Guess:</div> 
+    <input type="string" id="guess" name="guess"> <br> <br>
+    </form>
+    <div style="font-size: 1.5rem;" id="guesses">Guesses:</div>
+
+    <br>
+    <div style="font-size: 1.5rem;">Word: </div>
+</body>
+<script>
+    lastG = document.getElementById("guess").value;
+    document.getElementById("lastGuess") = `Last Guess: ${lastG}`;
+    function FirstWord() {
+        //Word: Potassium Adriel
+    }
+    function SecondWord() {
+        //Word: Champaca Adriel
+    }
+    function ThirdWord() {
+        //Word: Pisay Adriel
+    }
+</script>
+</html>
