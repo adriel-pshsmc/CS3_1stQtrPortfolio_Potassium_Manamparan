@@ -1,0 +1,2296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>10-max-subarray-sum</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- External Libraries -->
+  <!-- Note: Pyodide is loaded dynamically only when Python is selected -->
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.49.0/min/vs/loader.js"></script>
+  <script>
+/**
+ * Minified by jsDelivr using Terser v5.37.0.
+ * Original file: /npm/canvas-confetti@1.9.2/dist/confetti.browser.js
+ *
+ * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
+ */
+!function(t,e){!function t(e,a,n,r){var o=!!(e.Worker&&e.Blob&&e.Promise&&e.OffscreenCanvas&&e.OffscreenCanvasRenderingContext2D&&e.HTMLCanvasElement&&e.HTMLCanvasElement.prototype.transferControlToOffscreen&&e.URL&&e.URL.createObjectURL),i="function"==typeof Path2D&&"function"==typeof DOMMatrix,l=function(){if(!e.OffscreenCanvas)return!1;var t=new OffscreenCanvas(1,1),a=t.getContext("2d");a.fillRect(0,0,1,1);var n=t.transferToImageBitmap();try{a.createPattern(n,"no-repeat")}catch(t){return!1}return!0}();function s(){}function c(t){var n=a.exports.Promise,r=void 0!==n?n:e.Promise;return"function"==typeof r?new r(t):(t(s,s),null)}var h,f,u,d,m,g,p,b,M,v,y,w=(h=l,f=new Map,{transform:function(t){if(h)return t;if(f.has(t))return f.get(t);var e=new OffscreenCanvas(t.width,t.height);return e.getContext("2d").drawImage(t,0,0),f.set(t,e),e},clear:function(){f.clear()}}),x=(m=Math.floor(1e3/60),g={},p=0,"function"==typeof requestAnimationFrame&&"function"==typeof cancelAnimationFrame?(u=function(t){var e=Math.random();return g[e]=requestAnimationFrame((function a(n){p===n||p+m-1<n?(p=n,delete g[e],t()):g[e]=requestAnimationFrame(a)})),e},d=function(t){g[t]&&cancelAnimationFrame(g[t])}):(u=function(t){return setTimeout(t,m)},d=function(t){return clearTimeout(t)}),{frame:u,cancel:d}),C=(v={},function(){if(b)return b;if(!n&&o){var e=["var CONFETTI, SIZE = {}, module = {};","("+t.toString()+")(this, module, true, SIZE);","onmessage = function(msg) {","  if (msg.data.options) {","    CONFETTI(msg.data.options).then(function () {","      if (msg.data.callback) {","        postMessage({ callback: msg.data.callback });","      }","    });","  } else if (msg.data.reset) {","    CONFETTI && CONFETTI.reset();","  } else if (msg.data.resize) {","    SIZE.width = msg.data.resize.width;","    SIZE.height = msg.data.resize.height;","  } else if (msg.data.canvas) {","    SIZE.width = msg.data.canvas.width;","    SIZE.height = msg.data.canvas.height;","    CONFETTI = module.exports.create(msg.data.canvas);","  }","}"].join("\n");try{b=new Worker(URL.createObjectURL(new Blob([e])))}catch(t){return void 0!==typeof console&&"function"==typeof console.warn&&console.warn("🎊 Could not load worker",t),null}!function(t){function e(e,a){t.postMessage({options:e||{},callback:a})}t.init=function(e){var a=e.transferControlToOffscreen();t.postMessage({canvas:a},[a])},t.fire=function(a,n,r){if(M)return e(a,null),M;var o=Math.random().toString(36).slice(2);return M=c((function(n){function i(e){e.data.callback===o&&(delete v[o],t.removeEventListener("message",i),M=null,w.clear(),r(),n())}t.addEventListener("message",i),e(a,o),v[o]=i.bind(null,{data:{callback:o}})}))},t.reset=function(){for(var e in t.postMessage({reset:!0}),v)v[e](),delete v[e]}}(b)}return b}),I={particleCount:50,angle:90,spread:45,startVelocity:45,decay:.9,gravity:1,drift:0,ticks:200,x:.5,y:.5,shapes:["square","circle"],zIndex:100,colors:["#26ccff","#a25afd","#ff5e7e","#88ff5a","#fcff42","#ffa62d","#ff36ff"],disableForReducedMotion:!1,scalar:1};function T(t,e,a){return function(t,e){return e?e(t):t}(t&&null!=t[e]?t[e]:I[e],a)}function E(t){return t<0?0:Math.floor(t)}function P(t){return parseInt(t,16)}function S(t){return t.map(O)}function O(t){var e=String(t).replace(/[^0-9a-f]/gi,"");return e.length<6&&(e=e[0]+e[0]+e[1]+e[1]+e[2]+e[2]),{r:P(e.substring(0,2)),g:P(e.substring(2,4)),b:P(e.substring(4,6))}}function k(t){t.width=document.documentElement.clientWidth,t.height=document.documentElement.clientHeight}function B(t){var e=t.getBoundingClientRect();t.width=e.width,t.height=e.height}function F(t,e){e.x+=Math.cos(e.angle2D)*e.velocity+e.drift,e.y+=Math.sin(e.angle2D)*e.velocity+e.gravity,e.velocity*=e.decay,e.flat?(e.wobble=0,e.wobbleX=e.x+10*e.scalar,e.wobbleY=e.y+10*e.scalar,e.tiltSin=0,e.tiltCos=0,e.random=1):(e.wobble+=e.wobbleSpeed,e.wobbleX=e.x+10*e.scalar*Math.cos(e.wobble),e.wobbleY=e.y+10*e.scalar*Math.sin(e.wobble),e.tiltAngle+=.1,e.tiltSin=Math.sin(e.tiltAngle),e.tiltCos=Math.cos(e.tiltAngle),e.random=Math.random()+2);var a=e.tick++/e.totalTicks,n=e.x+e.random*e.tiltCos,r=e.y+e.random*e.tiltSin,o=e.wobbleX+e.random*e.tiltCos,l=e.wobbleY+e.random*e.tiltSin;if(t.fillStyle="rgba("+e.color.r+", "+e.color.g+", "+e.color.b+", "+(1-a)+")",t.beginPath(),i&&"path"===e.shape.type&&"string"==typeof e.shape.path&&Array.isArray(e.shape.matrix))t.fill(function(t,e,a,n,r,o,i){var l=new Path2D(t),s=new Path2D;s.addPath(l,new DOMMatrix(e));var c=new Path2D;return c.addPath(s,new DOMMatrix([Math.cos(i)*r,Math.sin(i)*r,-Math.sin(i)*o,Math.cos(i)*o,a,n])),c}(e.shape.path,e.shape.matrix,e.x,e.y,.1*Math.abs(o-n),.1*Math.abs(l-r),Math.PI/10*e.wobble));else if("bitmap"===e.shape.type){var s=Math.PI/10*e.wobble,c=.1*Math.abs(o-n),h=.1*Math.abs(l-r),f=e.shape.bitmap.width*e.scalar,u=e.shape.bitmap.height*e.scalar,d=new DOMMatrix([Math.cos(s)*c,Math.sin(s)*c,-Math.sin(s)*h,Math.cos(s)*h,e.x,e.y]);d.multiplySelf(new DOMMatrix(e.shape.matrix));var m=t.createPattern(w.transform(e.shape.bitmap),"no-repeat");m.setTransform(d),t.globalAlpha=1-a,t.fillStyle=m,t.fillRect(e.x-f/2,e.y-u/2,f,u),t.globalAlpha=1}else if("circle"===e.shape)t.ellipse?t.ellipse(e.x,e.y,Math.abs(o-n)*e.ovalScalar,Math.abs(l-r)*e.ovalScalar,Math.PI/10*e.wobble,0,2*Math.PI):function(t,e,a,n,r,o,i,l,s){t.save(),t.translate(e,a),t.rotate(o),t.scale(n,r),t.arc(0,0,1,i,l,s),t.restore()}(t,e.x,e.y,Math.abs(o-n)*e.ovalScalar,Math.abs(l-r)*e.ovalScalar,Math.PI/10*e.wobble,0,2*Math.PI);else if("star"===e.shape)for(var g=Math.PI/2*3,p=4*e.scalar,b=8*e.scalar,M=e.x,v=e.y,y=5,x=Math.PI/y;y--;)M=e.x+Math.cos(g)*b,v=e.y+Math.sin(g)*b,t.lineTo(M,v),g+=x,M=e.x+Math.cos(g)*p,v=e.y+Math.sin(g)*p,t.lineTo(M,v),g+=x;else t.moveTo(Math.floor(e.x),Math.floor(e.y)),t.lineTo(Math.floor(e.wobbleX),Math.floor(r)),t.lineTo(Math.floor(o),Math.floor(l)),t.lineTo(Math.floor(n),Math.floor(e.wobbleY));return t.closePath(),t.fill(),e.tick<e.totalTicks}function A(t,a){var i,l=!t,s=!!T(a||{},"resize"),h=!1,f=T(a,"disableForReducedMotion",Boolean),u=o&&!!T(a||{},"useWorker")?C():null,d=l?k:B,m=!(!t||!u)&&!!t.__confetti_initialized,g="function"==typeof matchMedia&&matchMedia("(prefers-reduced-motion)").matches;function p(e,a,o){for(var l,s,h,f,u,m=T(e,"particleCount",E),g=T(e,"angle",Number),p=T(e,"spread",Number),b=T(e,"startVelocity",Number),M=T(e,"decay",Number),v=T(e,"gravity",Number),y=T(e,"drift",Number),C=T(e,"colors",S),I=T(e,"ticks",Number),P=T(e,"shapes"),O=T(e,"scalar"),k=!!T(e,"flat"),B=function(t){var e=T(t,"origin",Object);return e.x=T(e,"x",Number),e.y=T(e,"y",Number),e}(e),A=m,R=[],N=t.width*B.x,z=t.height*B.y;A--;)R.push((l={x:N,y:z,angle:g,spread:p,startVelocity:b,color:C[A%C.length],shape:P[(f=0,u=P.length,Math.floor(Math.random()*(u-f))+f)],ticks:I,decay:M,gravity:v,drift:y,scalar:O,flat:k},s=void 0,h=void 0,s=l.angle*(Math.PI/180),h=l.spread*(Math.PI/180),{x:l.x,y:l.y,wobble:10*Math.random(),wobbleSpeed:Math.min(.11,.1*Math.random()+.05),velocity:.5*l.startVelocity+Math.random()*l.startVelocity,angle2D:-s+(.5*h-Math.random()*h),tiltAngle:(.5*Math.random()+.25)*Math.PI,color:l.color,shape:l.shape,tick:0,totalTicks:l.ticks,decay:l.decay,drift:l.drift,random:Math.random()+2,tiltSin:0,tiltCos:0,wobbleX:0,wobbleY:0,gravity:3*l.gravity,ovalScalar:.6,scalar:l.scalar,flat:l.flat}));return i?i.addFettis(R):(i=function(t,e,a,o,i){var l,s,h=e.slice(),f=t.getContext("2d"),u=c((function(e){function c(){l=s=null,f.clearRect(0,0,o.width,o.height),w.clear(),i(),e()}l=x.frame((function e(){!n||o.width===r.width&&o.height===r.height||(o.width=t.width=r.width,o.height=t.height=r.height),o.width||o.height||(a(t),o.width=t.width,o.height=t.height),f.clearRect(0,0,o.width,o.height),(h=h.filter((function(t){return F(f,t)}))).length?l=x.frame(e):c()})),s=c}));return{addFettis:function(t){return h=h.concat(t),u},canvas:t,promise:u,reset:function(){l&&x.cancel(l),s&&s()}}}(t,R,d,a,o),i.promise)}function b(a){var n=f||T(a,"disableForReducedMotion",Boolean),r=T(a,"zIndex",Number);if(n&&g)return c((function(t){t()}));l&&i?t=i.canvas:l&&!t&&(t=function(t){var e=document.createElement("canvas");return e.style.position="fixed",e.style.top="0px",e.style.left="0px",e.style.pointerEvents="none",e.style.zIndex=t,e}(r),document.body.appendChild(t)),s&&!m&&d(t);var o={width:t.width,height:t.height};function b(){if(u){var e={getBoundingClientRect:function(){if(!l)return t.getBoundingClientRect()}};return d(e),void u.postMessage({resize:{width:e.width,height:e.height}})}o.width=o.height=null}function M(){i=null,s&&(h=!1,e.removeEventListener("resize",b)),l&&t&&(document.body.removeChild(t),t=null,m=!1)}return u&&!m&&u.init(t),m=!0,u&&(t.__confetti_initialized=!0),s&&!h&&(h=!0,e.addEventListener("resize",b,!1)),u?u.fire(a,o,M):p(a,o,M)}return b.reset=function(){u&&u.reset(),i&&i.reset()},b}function R(){return y||(y=A(null,{useWorker:!0,resize:!0})),y}a.exports=function(){return R().apply(this,arguments)},a.exports.reset=function(){R().reset()},a.exports.create=A,a.exports.shapeFromPath=function(t){if(!i)throw new Error("path confetti are not supported in this browser");var e,a;"string"==typeof t?e=t:(e=t.path,a=t.matrix);var n=new Path2D(e),r=document.createElement("canvas").getContext("2d");if(!a){for(var o,l,s=1e3,c=s,h=s,f=0,u=0,d=0;d<s;d+=2)for(var m=0;m<s;m+=2)r.isPointInPath(n,d,m,"nonzero")&&(c=Math.min(c,d),h=Math.min(h,m),f=Math.max(f,d),u=Math.max(u,m));o=f-c,l=u-h;var g=Math.min(10/o,10/l);a=[g,0,0,g,-Math.round(o/2+c)*g,-Math.round(l/2+h)*g]}return{type:"path",path:e,matrix:a}},a.exports.shapeFromText=function(t){var e,a=1,n="#000000",r='"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "EmojiOne Color", "Android Emoji", "Twemoji Mozilla", "system emoji", sans-serif';"string"==typeof t?e=t:(e=t.text,a="scalar"in t?t.scalar:a,r="fontFamily"in t?t.fontFamily:r,n="color"in t?t.color:n);var o=10*a,i=o+"px "+r,l=new OffscreenCanvas(o,o),s=l.getContext("2d");s.font=i;var c=s.measureText(e),h=Math.ceil(c.actualBoundingBoxRight+c.actualBoundingBoxLeft),f=Math.ceil(c.actualBoundingBoxAscent+c.actualBoundingBoxDescent),u=c.actualBoundingBoxLeft+2,d=c.actualBoundingBoxAscent+2;h+=4,f+=4,(s=(l=new OffscreenCanvas(h,f)).getContext("2d")).font=i,s.fillStyle=n,s.fillText(e,u,d);var m=1/a;return{type:"bitmap",bitmap:l.transferToImageBitmap(),matrix:[m,0,0,m,-h*m/2,-f*m/2]}}}(function(){return void 0!==t?t:"undefined"!=typeof self?self:this||{}}(),e,!1),t.confetti=e.exports}(window,{});
+//# sourceMappingURL=/sm/d53f2f22b03fd579321823d70b9a568763d22cd7282cb1b3153f07dde591a548.map
+</script>
+  
+  <!-- Inline Styles for Self-Contained File -->
+  <style>
+    /* ==========================================
+   Programming Practice Platform - Student CSS
+   Design: Grade 9 Friendly, Light & Clear
+   ========================================== */
+
+/* === CSS Variables === */
+:root {
+  /* Colors */
+  --color-primary: #4A90E2;
+  --color-primary-dark: #357ABD;
+  --color-success: #28a745;
+  --color-success-light: #d4edda;
+  --color-error: #dc3545;
+  --color-error-light: #f8d7da;
+  --color-warning: #ffc107;
+  --color-info: #17a2b8;
+  
+  --color-bg: #f7f9fc;
+  --color-card-bg: #ffffff;
+  --color-border: #dee2e6;
+  --color-border-light: #e9ecef;
+  
+  --color-text-primary: #2c3e50;
+  --color-text-body: #495057;
+  --color-text-muted: #6c757d;
+  --color-code-inline: #e83e8c;
+  
+  /* Input/Output box backgrounds */
+  --color-input-bg: #e7f3ff;
+  --color-output-bg: #e7ffe7;
+  
+  /* Typography */
+  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-family-mono: 'Fira Code', 'Monaco', 'Consolas', 'Courier New', monospace;
+  
+  --font-size-base: 16px;
+  --font-size-large: 18px;
+  --font-size-small: 14px;
+  --font-size-h1: 28px;
+  --font-size-h2: 22px;
+  --font-size-h3: 20px;
+  
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --line-height-base: 1.6;
+  --line-height-heading: 1.3;
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-hover: 0 4px 12px rgba(74, 144, 226, 0.15);
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* === Reset & Base Styles === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--font-size-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text-body);
+  background-color: var(--color-bg);
+  min-height: 100vh;
+}
+
+/* === Typography === */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+  margin-bottom: var(--spacing-md);
+}
+
+h1 { font-size: var(--font-size-h1); }
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-h3); }
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+code {
+  font-family: var(--font-family-mono);
+  font-size: 0.9em;
+  color: var(--color-code-inline);
+  background-color: var(--color-border-light);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+pre {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-small);
+  background-color: #f8f9fa;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  overflow-x: auto;
+  margin-bottom: var(--spacing-md);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* === Container & Layout === */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+.problem-container {
+  display: grid;
+  grid-template-columns: 42% 58%;
+  gap: var(--spacing-lg);
+  align-items: start;
+}
+
+.problem-panel {
+  background-color: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-md);
+  overflow-y: auto;
+  max-height: calc(100vh - 100px);
+}
+
+.solution-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  position: sticky;
+  top: var(--spacing-lg);
+}
+
+/* === Cards === */
+.card {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--color-border-light);
+}
+
+.card-content {
+  color: var(--color-text-body);
+}
+
+/* Special card backgrounds */
+.card-input {
+  background-color: var(--color-input-bg);
+  border-left: 4px solid var(--color-primary);
+}
+
+.card-output {
+  background-color: var(--color-output-bg);
+  border-left: 4px solid var(--color-success);
+}
+
+/* === Problem Header === */
+.problem-header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.problem-title {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.problem-meta {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+/* === Badges === */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+
+.badge-easy {
+  background-color: var(--color-success-light);
+  color: #155724;
+}
+
+.badge-medium {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.badge-hard {
+  background-color: var(--color-error-light);
+  color: #721c24;
+}
+
+.badge-time {
+  background-color: var(--color-border-light);
+  color: var(--color-text-body);
+}
+
+/* === Examples Section === */
+.example-card {
+  background-color: #f8f9fa;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.example-header {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-large);
+}
+
+.example-io {
+  display: grid;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.example-io-label {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-small);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.example-io-box {
+  background-color: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-md);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-small);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.example-explanation {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-body);
+  font-style: italic;
+}
+
+/* === Expandable Sections === */
+.expandable {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
+  overflow: hidden;
+}
+
+.expandable-header {
+  background-color: var(--color-border-light);
+  padding: var(--spacing-md);
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: var(--font-weight-medium);
+  transition: background-color var(--transition-fast);
+}
+
+.expandable-header:hover {
+  background-color: #dde1e6;
+}
+
+.expandable-content {
+  padding: var(--spacing-lg);
+  background-color: white;
+}
+
+details summary {
+  cursor: pointer;
+  user-select: none;
+  padding: var(--spacing-md);
+  background-color: var(--color-border-light);
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-medium);
+  list-style: none;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary::before {
+  content: '▶ ';
+  display: inline-block;
+  transition: transform var(--transition-fast);
+}
+
+details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+details[open] summary {
+  margin-bottom: var(--spacing-md);
+}
+
+/* === Language Selector === */
+.language-selector {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+}
+
+.language-selector label {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  display: block;
+  margin-bottom: var(--spacing-sm);
+}
+
+.language-options {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.language-option {
+  flex: 1;
+}
+
+.language-option input[type="radio"] {
+  display: none;
+}
+
+.language-option label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background-color: white;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-weight: var(--font-weight-medium);
+}
+
+.language-option label:hover {
+  border-color: var(--color-primary);
+  background-color: rgba(74, 144, 226, 0.05);
+}
+
+.language-option input[type="radio"]:checked + label {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+/* === Code Editor === */
+.editor-container {
+  background-color: var(--color-card-bg);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 450px;
+  transition: border-color var(--transition-fast);
+}
+
+.editor-container:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+/* === Buttons === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: 12px 24px;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-family-sans);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #5a6268;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-large {
+  width: 100%;
+  padding: 16px 24px;
+  font-size: var(--font-size-large);
+}
+
+.btn-success {
+  background-color: var(--color-success);
+  color: white;
+}
+
+.btn-success:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+/* Loading state */
+.btn-loading {
+  position: relative;
+  color: transparent;
+}
+
+.btn-loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-left: -8px;
+  margin-top: -8px;
+  border: 2px solid white;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* === Progress Bar === */
+.progress-container {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 24px;
+  background-color: var(--color-border-light);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-success), #20c997);
+  border-radius: var(--radius-full);
+  transition: width var(--transition-slow);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: var(--spacing-sm);
+  color: white;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* === Timer === */
+.timer-box {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin: var(--spacing-md) 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.timer-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.timer-display {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-large);
+  background: #f8f9fa;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+}
+
+.timer-controls {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+/* === Test Results === */
+.results-container {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.results-header {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.test-result {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
+  overflow: hidden;
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.test-result-header {
+  padding: var(--spacing-md);
+  font-weight: var(--font-weight-medium);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.test-result.passed {
+  border-left: 4px solid var(--color-success);
+}
+
+.test-result.passed .test-result-header {
+  background-color: var(--color-success-light);
+  color: #155724;
+}
+
+.test-result.failed {
+  border-left: 4px solid var(--color-error);
+}
+
+.test-result.failed .test-result-header {
+  background-color: var(--color-error-light);
+  color: #721c24;
+}
+
+.test-result-details {
+  padding: var(--spacing-lg);
+  background-color: white;
+  border-top: 1px solid var(--color-border);
+}
+
+.test-input {
+  margin-bottom: var(--spacing-md);
+}
+
+.test-input-label {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-small);
+}
+
+.test-input-value {
+  background-color: #f8f9fa;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-small);
+  white-space: pre-wrap;
+  margin-left: var(--spacing-md);
+}
+
+.test-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.test-output-column {
+  background-color: #f8f9fa;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-md);
+}
+
+.test-output-label {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-small);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.test-output-value {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-small);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.test-output-column.your-output {
+  border-left: 3px solid var(--color-error);
+}
+
+.test-output-column.expected-output {
+  border-left: 3px solid var(--color-success);
+}
+
+.friendly-message {
+  background-color: #fff3cd;
+  border-left: 4px solid var(--color-warning);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-sm);
+  color: #856404;
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+/* === Success Celebration === */
+.success-celebration {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: center;
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-md);
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.success-celebration h2 {
+  color: white;
+  font-size: 32px;
+  margin-bottom: var(--spacing-md);
+}
+
+.success-celebration p {
+  font-size: var(--font-size-large);
+  margin-bottom: var(--spacing-lg);
+}
+
+.success-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* === Responsive Design === */
+@media (max-width: 1200px) {
+  .problem-container {
+    grid-template-columns: 38% 62%;
+    gap: var(--spacing-md);
+  }
+  
+  .container {
+    padding: var(--spacing-md);
+  }
+}
+
+@media (max-width: 968px) {
+  .problem-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .solution-panel {
+    position: static;
+  }
+  
+  .problem-panel {
+    max-height: none;
+  }
+  
+  .test-comparison {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --font-size-base: 15px;
+    --font-size-h1: 24px;
+    --font-size-h2: 20px;
+    --font-size-h3: 18px;
+  }
+  
+  .container {
+    padding: var(--spacing-sm);
+  }
+  
+  .problem-panel {
+    padding: var(--spacing-lg);
+  }
+  
+  .card {
+    padding: var(--spacing-md);
+  }
+  
+  .editor-container {
+    height: 350px;
+  }
+  
+  .language-options {
+    flex-direction: column;
+  }
+}
+
+/* === Utility Classes === */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.mb-0 { margin-bottom: 0; }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+/* === Protocol Warning Banner === */
+.protocol-warning {
+  position: relative;
+  background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+  border: 2px solid #e17055;
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  padding-right: 48px; /* Make room for close button */
+  margin-bottom: var(--spacing-lg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  animation: slideDown 0.4s ease-out;
+}
+
+.protocol-warning-content {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+}
+
+.protocol-warning-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.protocol-warning-text {
+  flex: 1;
+}
+
+.protocol-warning-text h3 {
+  margin: 0 0 var(--spacing-sm) 0;
+  color: #d63031;
+  font-size: 1.1rem;
+}
+
+.protocol-warning-text p {
+  margin: 0 0 var(--spacing-sm) 0;
+  color: #2d3436;
+  line-height: 1.6;
+}
+
+.protocol-warning-text p:last-child {
+  margin-bottom: 0;
+}
+
+.protocol-warning-text strong {
+  color: #d63031;
+  font-weight: 600;
+}
+
+.protocol-warning-text code {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.protocol-warning-instructions {
+  margin-top: var(--spacing-sm);
+  padding-left: var(--spacing-md);
+  border-left: 3px solid #e17055;
+}
+
+.protocol-warning-instructions li {
+  margin-bottom: var(--spacing-xs);
+  color: #2d3436;
+}
+
+.warning-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #d63031;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  min-width: 32px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.warning-close-btn:hover {
+  opacity: 1;
+  background-color: rgba(214, 48, 49, 0.1);
+  transform: scale(1.1);
+}
+
+.warning-close-btn:active {
+  transform: scale(0.95);
+}
+
+.warning-close-btn:focus {
+  outline: 2px solid #d63031;
+  outline-offset: 2px;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Pyodide Loading Overlay === */
+.pyodide-loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.pyodide-loading-overlay.hidden {
+  display: none;
+}
+
+.pyodide-loading-content {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: var(--spacing-xl);
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  animation: scaleIn 0.3s ease-out;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto var(--spacing-md) auto;
+  border: 4px solid var(--color-border);
+  border-top: 4px solid var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.pyodide-loading-content h3 {
+  margin: 0 0 var(--spacing-sm) 0;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+}
+
+.loading-submessage {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* === Responsive adjustments for warnings/overlays === */
+@media (max-width: 768px) {
+  .protocol-warning {
+    padding: var(--spacing-sm);
+  }
+  
+  .protocol-warning-content {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .protocol-warning-icon {
+    font-size: 1.2rem;
+  }
+  
+  .pyodide-loading-content {
+    margin: var(--spacing-md);
+    padding: var(--spacing-lg);
+    max-width: calc(100% - 2 * var(--spacing-md));
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Protocol Warning Banner (for file:// protocol) -->
+  <div id="protocol-warning" class="protocol-warning" style="display: none;">
+    <button class="warning-close-btn" onclick="dismissProtocolWarning()" title="Close warning" aria-label="Close warning">✕</button>
+    <div class="protocol-warning-content">
+      <strong>⚠️ Python Disabled (File Protocol)</strong>
+      <p>Python requires a web server due to browser security restrictions.</p>
+      <details style="margin-top: 8px;">
+        <summary style="cursor: pointer; font-weight: 500;">How to enable Python?</summary>
+        <ol style="margin: 8px 0 0 0; padding-left: 20px; font-size: 0.9em;">
+          <li>Open terminal in the folder containing this HTML file</li>
+          <li>Run: <code>python3 -m http.server 8003</code></li>
+          <li>Open: <code>http://localhost:8003/[filename].html</code></li>
+        </ol>
+        <p style="margin: 8px 0 0 0; font-size: 0.9em;">✅ JavaScript works without a server.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- Pyodide Loading Overlay -->
+  <div id="pyodide-loading" class="pyodide-loading-overlay" style="display: none;">
+    <div class="pyodide-loading-content">
+      <div class="loading-spinner"></div>
+      <p id="pyodide-loading-message">Loading Python environment...</p>
+      <p class="loading-submessage">This may take a moment on first load</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="problem-container">
+      
+      <!-- LEFT PANEL: Problem Description -->
+      <div class="problem-panel">
+        <!-- Problem Header -->
+        <div class="problem-header">
+          <h1 class="problem-title">🎯 10-max-subarray-sum</h1>
+          <div class="problem-meta">
+            <span class="badge badge-medium" id="difficulty-badge">⭐⭐ Medium</span>
+            <span class="badge badge-time">⏱️ 20-30 minutes</span>
+          </div>
+        </div>
+
+        <!-- Problem Description -->
+        <div class="card">
+          <div class="card-header">
+            📝 Problem Description
+          </div>
+          <div class="card-content" id="problem-description">
+            <h1>Maximum Subarray Sum</h1>
+<h2>Problem Description</h2>
+<p>Given an array of integers (which may include negative numbers), find the <strong>maximum sum</strong> of any contiguous subarray.</p>
+<p>A contiguous subarray is a sequence of elements that are next to each other in the array.</p>
+<p>For example, in the array <code>[-2, 1, -3, 4, -1, 2, 1, -5, 4]</code>:</p>
+<ul>
+<li>The subarray <code>[4, -1, 2, 1]</code> has a sum of 6</li>
+<li>This is the maximum possible sum of any contiguous subarray</li>
+</ul>
+<h2>Input Format</h2>
+<ul>
+<li>First line: Integer N (array size, 1 ≤ N ≤ 1000)</li>
+<li>Second line: N space-separated integers</li>
+</ul>
+<h2>Output Format</h2>
+<ul>
+<li>Single integer: The maximum subarray sum</li>
+</ul>
+<h2>Example 1</h2>
+<p><strong>Input:</strong></p>
+<pre><code>9
+-2 1 -3 4 -1 2 1 -5 4
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>6
+</code></pre>
+<p><strong>Explanation:</strong> The subarray <code>[4, -1, 2, 1]</code> has the maximum sum of 6.</p>
+<h2>Example 2</h2>
+<p><strong>Input:</strong></p>
+<pre><code>5
+5 -3 5 2 -1
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>9
+</code></pre>
+<p><strong>Explanation:</strong> The subarray <code>[5, -3, 5, 2]</code> has the maximum sum of 9.</p>
+<h2>Example 3</h2>
+<p><strong>Input:</strong></p>
+<pre><code>3
+-1 -2 -3
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>-1
+</code></pre>
+<p><strong>Explanation:</strong> When all numbers are negative, the maximum sum is the largest single element.</p>
+<h2>Constraints</h2>
+<ul>
+<li>1 ≤ N ≤ 1000</li>
+<li>-10000 ≤ array elements ≤ 10000</li>
+</ul>
+<h2>Hints</h2>
+<details>
+<summary>Hint 1: Brute Force Approach</summary>
+
+<p>You could try all possible subarrays:</p>
+<pre><code>for each starting position i:
+    for each ending position j &gt;= i:
+        calculate sum of elements from i to j
+        keep track of maximum
+</code></pre>
+<p>This works but is O(N³) or O(N²) - can we do better?</p>
+</details>
+
+<details>
+<summary>Hint 2: Think About Building Up</summary>
+
+<p>As you go through the array, keep track of:</p>
+<ul>
+<li>The maximum sum ending at the current position</li>
+<li>The overall maximum sum seen so far</li>
+</ul>
+<p>At each position, you have a choice:</p>
+<ul>
+<li>Continue the previous subarray (add current element)</li>
+<li>Start a new subarray (take only current element)</li>
+</ul>
+<p>Which choice gives you a better sum?</p>
+</details>
+
+<details>
+<summary>Hint 3: Kadane's Algorithm</summary>
+
+<p>This is a famous algorithm! Here&#39;s the idea:</p>
+<pre><code>max_ending_here = 0
+max_so_far = -infinity
+
+for each element in array:
+    max_ending_here = max(element, max_ending_here + element)
+    max_so_far = max(max_so_far, max_ending_here)
+
+return max_so_far
+</code></pre>
+<p>Why does this work? If <code>max_ending_here</code> becomes negative, it&#39;s better to start fresh!</p>
+</details>
+
+          </div>
+        </div>
+
+        <!-- Input Format -->
+        <div class="card card-input" id="input-format-section">
+          <div class="card-header">
+            📥 Input Format
+          </div>
+          <div class="card-content">
+            <p>Details about the input format will appear here.</p>
+          </div>
+        </div>
+
+        <!-- Output Format -->
+        <div class="card card-output" id="output-format-section">
+          <div class="card-header">
+            📤 Output Format
+          </div>
+          <div class="card-content">
+            <p>Details about the output format will appear here.</p>
+          </div>
+        </div>
+
+        <!-- Examples -->
+        <div id="examples-section">
+          <!-- Examples will be dynamically inserted here -->
+        </div>
+
+        <!-- Constraints (Expandable) -->
+        <details class="expandable" id="constraints-section" style="display: none;">
+          <summary>📊 Constraints</summary>
+          <div class="card-content">
+            <p>Constraints will appear here if provided.</p>
+          </div>
+        </details>
+
+        <!-- Hints (Expandable) -->
+        <details class="expandable" id="hints-section" style="display: none;">
+          <summary>💡 Need a hint? Click to reveal</summary>
+          <div class="card-content">
+            <p>Hints will appear here if provided.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- RIGHT PANEL: Solution & Testing -->
+      <div class="solution-panel">
+        
+        <!-- Language Selector -->
+        <div class="language-selector">
+          <label>Choose Your Language:</label>
+          <div class="language-options">
+            <div class="language-option">
+              <input type="radio" name="language" value="javascript" id="lang-javascript" checked>
+              <label for="lang-javascript">⚡ JavaScript</label>
+            </div>
+            <div class="language-option">
+              <input type="radio" name="language" value="python" id="lang-python">
+              <label for="lang-python">🐍 Python</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code Editor -->
+        <div>
+          <label style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--color-text-primary);">
+            Your Solution
+          </label>
+          <div class="editor-container" id="editor-container"></div>
+        </div>
+
+        <!-- Timer -->
+        <div class="timer-box" aria-label="Problem timer">
+          <div class="timer-left">
+            <span>⏱️ Time:</span>
+            <span id="timer-display" class="timer-display" aria-live="polite">00:00</span>
+          </div>
+          <div class="timer-controls">
+            <button class="btn btn-secondary" id="timer-toggle" aria-pressed="false" title="Start/Pause (Alt+T)">Start</button>
+            <button class="btn" id="timer-reset" title="Reset timer">Reset</button>
+          </div>
+        </div>
+
+        <!-- Run Button -->
+        <button class="btn btn-primary btn-large" id="run-btn">
+          🚀 Run Tests
+          <span style="font-size: 12px; opacity: 0.8;">(Ctrl+Enter)</span>
+        </button>
+
+        <!-- Progress Bar (hidden initially) -->
+        <div class="progress-container" id="progress-container" style="display: none;">
+          <div class="progress-header">
+            <span>📊 Test Progress</span>
+            <span id="progress-text">0/0 passed</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Test Results -->
+        <div class="results-container" id="results-container">
+          <div class="results-header">
+            📋 Test Results
+          </div>
+          <p class="text-muted">Click "Run Tests" to check your solution.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ============================================
+    // Test Cases (Filled by Generator)
+    // ============================================
+    const testCases = [
+  {
+    "input": "9\n-2 1 -3 4 -1 2 1 -5 4",
+    "expectedOutput": "6"
+  },
+  {
+    "input": "5\n5 -3 5 2 -1",
+    "expectedOutput": "9"
+  },
+  {
+    "input": "3\n-1 -2 -3",
+    "expectedOutput": "-1"
+  },
+  {
+    "input": "1\n5",
+    "expectedOutput": "5"
+  },
+  {
+    "input": "1\n-10",
+    "expectedOutput": "-10"
+  },
+  {
+    "input": "5\n1 2 3 4 5",
+    "expectedOutput": "15"
+  },
+  {
+    "input": "5\n-5 -4 -3 -2 -1",
+    "expectedOutput": "-1"
+  },
+  {
+    "input": "6\n1 -1 1 -1 1 -1",
+    "expectedOutput": "1"
+  },
+  {
+    "input": "7\n5 -2 3 -1 4 -3 2",
+    "expectedOutput": "9"
+  },
+  {
+    "input": "8\n-3 5 -2 6 -1 4 -2 3",
+    "expectedOutput": "13"
+  },
+  {
+    "input": "5\n0 0 0 0 0",
+    "expectedOutput": "0"
+  },
+  {
+    "input": "6\n-5 0 -3 0 -1 0",
+    "expectedOutput": "0"
+  },
+  {
+    "input": "7\n0 -1 0 2 0 -3 0",
+    "expectedOutput": "2"
+  },
+  {
+    "input": "10\n100 100 100 100 100 100 100 100 100 100",
+    "expectedOutput": "1000"
+  },
+  {
+    "input": "8\n50 -10 60 -5 70 -15 80 -20",
+    "expectedOutput": "230"
+  },
+  {
+    "input": "6\n10 20 30 40 50 60",
+    "expectedOutput": "210"
+  },
+  {
+    "input": "35\n-5 13 1 0 -4 35 -7 20 9 -28 -26 -39 22 -3 18 41 -14 5 18 -26 0 -4 -22 -22 47 27 13 -6 39 -31 -46 -11 -34 15 37",
+    "expectedOutput": "133"
+  },
+  {
+    "input": "35\n-45 -14 4 14 21 17 12 41 30 42 27 38 -11 -13 -5 -47 -23 7 8 38 -11 6 -30 14 -4 5 2 2 8 19 20 -9 -30 8 41",
+    "expectedOutput": "246"
+  },
+  {
+    "input": "26\n-10 39 47 32 -4 -43 -2 -49 -16 28 44 17 -3 1 -12 -24 -13 -29 -46 15 6 -45 36 23 -11 -18",
+    "expectedOutput": "118"
+  },
+  {
+    "input": "41\n-36 -36 -47 2 47 36 -43 46 -7 -18 -26 -45 9 18 50 23 37 -32 -47 -4 37 40 46 -11 -32 41 27 13 -39 -6 -39 20 20 1 22 9 32 46 -45 29 25",
+    "expectedOutput": "290"
+  },
+  {
+    "input": "29\n20 31 -34 -10 -37 13 27 35 15 39 -34 23 3 -13 48 34 13 41 25 -27 6 43 22 47 -25 21 1 -21 -47",
+    "expectedOutput": "360"
+  },
+  {
+    "input": "31\n-14 15 -30 -1 -2 47 36 21 -12 37 43 28 -39 -36 -34 0 34 -40 17 -6 -19 31 13 -2 44 -46 -49 19 45 34 17",
+    "expectedOutput": "200"
+  },
+  {
+    "input": "5\n10000 -5000 10000 -5000 10000",
+    "expectedOutput": "20000"
+  },
+  {
+    "input": "4\n-10000 -9999 -9998 -9997",
+    "expectedOutput": "-9997"
+  },
+  {
+    "input": "3\n10000 10000 10000",
+    "expectedOutput": "30000"
+  },
+  {
+    "input": "131\n99 -44 -5 -23 80 32 -88 78 -92 -52 55 -59 -22 -41 -3 78 -74 -30 91 89 -30 -4 -77 -95 91 61 42 -31 -89 9 0 -7 100 -71 31 28 60 -77 -94 66 5 -52 42 74 -78 13 -72 89 82 93 95 -24 -27 -97 -68 -19 5 -13 85 -27 100 -22 64 37 51 -61 30 80 68 -51 24 93 72 81 78 -32 32 -55 84 56 72 -49 88 91 35 -89 -94 25 81 -32 2 70 44 1 -76 -19 -2 -100 86 36 36 -93 0 -44 -71 -65 24 -61 7 2 16 -36 -77 57 -74 -84 -20 97 18 17 -79 63 -78 74 -1 -56 -15 -91 -42 49 -61",
+    "expectedOutput": "1199"
+  },
+  {
+    "input": "160\n-45 -64 -93 -35 63 -57 -20 3 -79 59 -47 -86 5 -33 -36 93 21 83 32 70 -32 21 49 91 80 100 56 37 -19 13 -52 -2 1 -31 -26 44 -43 -35 86 -96 30 -55 72 -40 18 32 15 -51 -90 -88 65 -97 11 -65 -50 -18 -33 -65 -75 28 -26 11 -14 69 92 90 -98 -10 -63 -76 35 -75 -96 15 -64 -9 36 74 -27 -63 -54 -5 -38 81 -24 -92 99 -67 -79 63 14 57 40 -32 29 -55 71 -79 -70 -96 71 -84 17 74 35 94 46 94 25 3 7 -51 44 66 1 -4 18 63 -41 -47 -92 24 90 67 -18 56 91 90 -44 -85 -73 8 -42 -7 -54 59 98 -36 80 92 76 84 -75 87 21 16 -92 -41 16 6 10 37 5 74 62 -44 0 79 -91 -19",
+    "expectedOutput": "1069"
+  },
+  {
+    "input": "189\n49 32 -9 -55 -11 -33 29 80 -35 80 6 95 -70 -18 -4 -40 -94 -67 75 -26 54 -97 -20 14 23 -72 12 -55 88 1 -69 -92 34 86 73 85 -59 -18 -93 26 -77 -53 81 -17 -3 -35 83 -31 -11 93 91 9 83 54 -32 63 2 85 -38 84 81 -100 -40 16 44 48 -43 41 -36 13 -93 43 -96 95 -95 -28 -67 -33 87 -14 -94 -77 88 23 83 -48 98 -9 24 16 -17 -35 -33 -54 2 30 22 -3 -58 -46 -67 -11 4 -97 72 -44 -59 -84 -45 -99 100 86 58 -65 23 48 -97 70 -91 52 80 42 69 -6 82 83 -97 48 10 2 87 -35 4 -51 -49 -74 47 -93 24 93 -65 35 -12 -17 -51 -35 -44 -98 50 49 -10 -10 30 -10 -56 -20 31 39 -30 -75 -100 -58 -3 59 5 61 -59 11 -67 37 45 98 -46 -20 -50 -77 7 -45 69 -7 -49 28 -25 20 -10 64 -45 48 70",
+    "expectedOutput": "646"
+  },
+  {
+    "input": "191\n83 43 3 -14 -6 -45 37 -98 5 83 -22 29 -87 -89 -93 44 64 79 85 73 56 24 -18 95 -73 96 -77 10 80 -92 71 69 -13 -30 -92 -25 -19 -48 -47 -93 77 -37 77 21 16 5 -24 29 40 49 -16 -56 68 -60 60 77 56 -40 -99 -12 68 -37 57 -90 69 43 9 -56 -47 96 -48 -2 63 48 77 -8 29 42 5 -30 -61 -97 -92 5 89 91 -64 -78 69 45 -82 32 -56 -28 -3 -19 51 -81 70 -40 62 18 28 -6 -38 14 -10 74 -19 18 0 79 -56 -64 98 -97 71 89 -12 -68 -15 -65 35 -46 15 -44 -17 23 -42 -14 33 -79 -99 -54 -46 -27 87 92 46 70 69 -33 34 47 -52 88 -57 6 -95 -78 -8 -64 83 -69 -79 -94 93 -76 -74 -43 -28 -50 34 39 20 10 -66 -54 13 40 -17 22 -60 0 -92 47 50 16 -93 -32 -76 40 98 75 63 -20 54 -59 -87 100 -84",
+    "expectedOutput": "768"
+  },
+  {
+    "input": "195\n-69 73 83 -44 47 -48 -51 -15 -38 26 40 -88 -19 92 79 -93 4 -61 35 -66 0 -68 72 71 55 -66 68 -93 -7 21 -75 -58 -64 -3 -87 6 -37 -48 13 71 34 -48 -81 68 -28 -84 -6 87 -6 -87 20 28 -59 -41 71 56 -92 -86 89 35 -79 -30 53 -51 -80 43 -77 -32 55 -57 -66 13 35 13 -6 46 97 -67 86 1 -33 42 -62 29 -21 90 10 81 59 -68 13 3 96 -84 10 30 20 43 38 31 -34 -71 -1 8 77 -98 21 -70 -69 -100 94 53 77 86 -75 69 38 74 -21 100 -60 -60 -99 24 72 -23 -50 -33 49 18 -93 3 -34 12 -92 -74 96 20 88 -7 4 -94 34 -12 -16 -84 99 -55 -42 10 -44 -52 78 52 -89 -56 9 -54 -22 -68 -70 16 -56 -44 -88 69 30 17 -21 52 75 -69 18 36 -2 -86 -45 -8 -64 -50 -71 -39 75 -14 -29 21 28 89 -92 86 27 85 -94 33 -55",
+    "expectedOutput": "703"
+  }
+];
+    
+    // ============================================
+    // Starter Code Templates
+    // ============================================
+    const defaultCode = {
+      python: `# Starter code: Read input and echo it back
+# This verifies the code runner is working!
+
+def solve():
+    line = input()  # Read one line
+    print(line)     # Print it back
+
+solve()`,
+      javascript: `// Starter code: Read input and echo it back
+// This verifies the code runner is working!
+
+function solve() {
+    const line = readln();  // Read one line
+    console.log(line);      // Print it back
+}
+
+solve();`
+    };
+
+    // ============================================
+    // I/O Instructions for Blue/Green Boxes
+    // ============================================
+    const ioInstructions = {
+      javascript: {
+        input: `<p><strong>Reading Input:</strong></p>
+<p>Use <code>readln()</code> to read one line from stdin.</p>
+<pre><code>const line = readln();
+const number = Number(readln());</code></pre>`,
+        output: `<p><strong>Writing Output:</strong></p>
+<p>Use <code>console.log()</code> to write to stdout.</p>
+<pre><code>console.log("Hello");
+console.log(42);</code></pre>`
+      },
+      python: {
+        input: `<p><strong>Reading Input:</strong></p>
+<p>Use <code>input()</code> to read one line from stdin.</p>
+<pre><code>line = input()
+number = int(input())</code></pre>`,
+        output: `<p><strong>Writing Output:</strong></p>
+<p>Use <code>print()</code> to write to stdout.</p>
+<pre><code>print("Hello")
+print(42)</code></pre>`
+      }
+    };
+
+    // ============================================
+    // DOM Elements
+    // ============================================
+    const langRadios = document.getElementsByName('language');
+    const runBtn = document.getElementById('run-btn');
+    const resultsContainer = document.getElementById('results-container');
+    const progressContainer = document.getElementById('progress-container');
+    const progressFill = document.getElementById('progress-fill');
+    const progressText = document.getElementById('progress-text');
+  const timerDisplay = document.getElementById('timer-display');
+  const timerToggleBtn = document.getElementById('timer-toggle');
+  const timerResetBtn = document.getElementById('timer-reset');
+    
+    let monacoEditor;
+    let pyodide;
+    let pyodideLoading = false;
+    let pyodideLoaded = false;
+    let currentLanguage = 'javascript'; // Default to JavaScript for instant page load
+
+    // ============================================
+    // Update I/O Instruction Boxes
+    // ============================================
+    function updateIOInstructions(language) {
+      const inputSection = document.querySelector('#input-format-section .card-content');
+      const outputSection = document.querySelector('#output-format-section .card-content');
+      
+      if (inputSection && ioInstructions[language]) {
+        inputSection.innerHTML = ioInstructions[language].input;
+      }
+      
+      if (outputSection && ioInstructions[language]) {
+        outputSection.innerHTML = ioInstructions[language].output;
+      }
+    }
+
+    // ============================================
+    // Protocol Detection & Pyodide Management
+    // ============================================
+    function isFileProtocol() {
+      return window.location.protocol === 'file:';
+    }
+
+    function showProtocolWarning() {
+      const warningDiv = document.getElementById('protocol-warning');
+      if (warningDiv) {
+        warningDiv.style.display = 'block';
+      }
+    }
+
+    function hideProtocolWarning() {
+      const warningDiv = document.getElementById('protocol-warning');
+      if (warningDiv) {
+        warningDiv.style.display = 'none';
+      }
+    }
+
+    function dismissProtocolWarning() {
+      // User manually dismissed the warning
+      hideProtocolWarning();
+      // Note: Warning will reappear if user tries to click Python button
+      // (showProtocolWarning is called in the Python language handler)
+    }
+
+    function showPyodideLoading(message = 'Loading Python environment...') {
+      const loadingDiv = document.getElementById('pyodide-loading');
+      const messageP = document.getElementById('pyodide-loading-message');
+      if (loadingDiv) loadingDiv.style.display = 'flex';
+      if (messageP) messageP.textContent = message;
+    }
+
+    function hidePyodideLoading() {
+      const loadingDiv = document.getElementById('pyodide-loading');
+      if (loadingDiv) loadingDiv.style.display = 'none';
+    }
+
+    // Dynamically load Pyodide script
+    function loadPyodideScript() {
+      return new Promise((resolve, reject) => {
+        if (window.loadPyodide) {
+          resolve(); // Already loaded
+          return;
+        }
+        
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js';
+        script.onload = resolve;
+        script.onerror = () => reject(new Error('Failed to load Pyodide script from CDN'));
+        document.head.appendChild(script);
+      });
+    }
+
+    // Lazy load and initialize Pyodide
+    async function ensurePyodideLoaded(showLoading = true) {
+      if (pyodideLoaded) {
+        return pyodide; // Already loaded
+      }
+      
+      if (pyodideLoading) {
+        // Wait for existing load to complete
+        while (pyodideLoading && !pyodideLoaded) {
+          await new Promise(resolve => setTimeout(resolve, 100));
+        }
+        return pyodide;
+      }
+      
+      // Start loading
+      pyodideLoading = true;
+      if (showLoading) {
+        showPyodideLoading('Loading Python environment...');
+      }
+      
+      try {
+        // Load the Pyodide script first
+        await loadPyodideScript();
+        
+        // Initialize Pyodide
+        pyodide = await loadPyodide();
+        
+        pyodideLoaded = true;
+        pyodideLoading = false;
+        
+        if (showLoading) {
+          hidePyodideLoading();
+        }
+        
+        return pyodide;
+      } catch (error) {
+        pyodideLoading = false;
+        if (showLoading) {
+          hidePyodideLoading();
+        }
+        throw error;
+      }
+    }
+
+    // Background preload (on web servers only)
+    function preloadPyodideInBackground() {
+      if (isFileProtocol() || pyodideLoaded || pyodideLoading) {
+        return; // Don't preload on file:// or if already loaded/loading
+      }
+      
+      // Silent load in background (no loading indicator)
+      ensurePyodideLoaded(false).catch(err => {
+        console.log('Background Pyodide preload failed:', err);
+        // Don't show error - will load on-demand if user clicks Python
+      });
+    }
+
+    // ============================================
+    // Timer State & Helpers
+    // ============================================
+    const timer = {
+      startTs: null,
+      elapsedMs: 0,
+      intervalId: null,
+      state: 'idle' // 'idle' | 'running' | 'paused'
+    };
+
+    function formatTime(ms) {
+      const totalSec = Math.floor(ms / 1000);
+      const mm = String(Math.floor(totalSec / 60)).padStart(2, '0');
+      const ss = String(totalSec % 60).padStart(2, '0');
+      return `${mm}:${ss}`;
+    }
+
+    function updateTimerDisplay() {
+      const now = Date.now();
+      let ms = timer.elapsedMs;
+      if (timer.state === 'running' && timer.startTs) {
+        ms += (now - timer.startTs);
+      }
+      timerDisplay.textContent = formatTime(ms);
+    }
+
+    function startTimer() {
+      if (timer.state === 'running') return;
+      timer.startTs = Date.now();
+      timer.state = 'running';
+      timerToggleBtn.textContent = 'Pause';
+      timerToggleBtn.setAttribute('aria-pressed', 'true');
+      if (timer.intervalId) clearInterval(timer.intervalId);
+      timer.intervalId = setInterval(updateTimerDisplay, 1000);
+      updateTimerDisplay();
+    }
+
+    function pauseTimer() {
+      if (timer.state !== 'running') return;
+      if (timer.intervalId) clearInterval(timer.intervalId);
+      timer.intervalId = null;
+      const now = Date.now();
+      timer.elapsedMs += (now - (timer.startTs || now));
+      timer.startTs = null;
+      timer.state = 'paused';
+      timerToggleBtn.textContent = 'Start';
+      timerToggleBtn.setAttribute('aria-pressed', 'false');
+      updateTimerDisplay();
+    }
+
+    function resetTimer() {
+      if (timer.intervalId) clearInterval(timer.intervalId);
+      timer.intervalId = null;
+      timer.startTs = null;
+      timer.elapsedMs = 0;
+      timer.state = 'idle';
+      timerToggleBtn.textContent = 'Start';
+      timerToggleBtn.setAttribute('aria-pressed', 'false');
+      updateTimerDisplay();
+    }
+
+    function getElapsedMs() {
+      if (timer.state === 'running' && timer.startTs) {
+        return timer.elapsedMs + (Date.now() - timer.startTs);
+      }
+      return timer.elapsedMs;
+    }
+
+    function parseTimeEstimate() {
+      const el = document.querySelector('.badge-time');
+      if (!el) return null;
+      const raw = el.textContent || '';
+      const matchPlus = raw.match(/(\d+)\s*\+\s*minutes/i);
+      const matchRange = raw.match(/(\d+)\s*-\s*(\d+)\s*minutes/i);
+      if (matchPlus) {
+        return { min: parseInt(matchPlus[1], 10), max: null };
+      }
+      if (matchRange) {
+        return { min: parseInt(matchRange[1], 10), max: parseInt(matchRange[2], 10) };
+      }
+      return null;
+    }
+
+    function compareElapsedToEstimate(ms, range) {
+      if (!range || range.min == null) return 'unknown';
+      const minutes = ms / 60000;
+      if (range.max == null) {
+        return minutes < range.min ? 'within' : 'over';
+      }
+      if (minutes < range.min) return 'under';
+      if (minutes <= range.max) return 'within';
+      return 'over';
+    }
+
+    // Timer UI wiring
+    timerToggleBtn.addEventListener('click', () => {
+      if (timer.state === 'running') {
+        pauseTimer();
+      } else {
+        startTimer();
+      }
+    });
+
+    timerResetBtn.addEventListener('click', () => {
+      resetTimer();
+    });
+
+    // ============================================
+    // Initialize UI Components Immediately
+    // ============================================
+    // Initialize I/O instruction boxes with default language (instant!)
+    updateIOInstructions(currentLanguage);
+
+    // Check protocol and disable Python if on file:// (instant!)
+    if (isFileProtocol()) {
+      showProtocolWarning();
+      document.getElementById('lang-python').disabled = true;
+      document.getElementById('lang-python').style.opacity = '0.5';
+    } else {
+      // On web server - preload Pyodide in background after 5 seconds
+      setTimeout(preloadPyodideInBackground, 5000);
+    }
+
+    // ============================================
+    // Monaco Editor Initialization
+    // ============================================
+    require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.49.0/min/vs' }});
+    require(['vs/editor/editor.main'], function() {
+      monacoEditor = monaco.editor.create(document.getElementById('editor-container'), {
+        value: defaultCode.javascript,
+        language: 'javascript',
+        theme: 'vs-light',  // Light theme for student-friendly appearance
+        fontSize: 15,
+        lineHeight: 22,
+        automaticLayout: true,
+        minimap: { enabled: false },  // Remove minimap for cleaner look
+        scrollBeyondLastLine: false,
+        renderLineHighlight: 'all',
+        padding: { top: 10, bottom: 10 }
+      });
+
+      // Language change handler with lazy Pyodide loading
+      langRadios.forEach(radio => {
+        radio.addEventListener('change', async (e) => {
+          if (e.target.checked) {
+            const newLang = e.target.value;
+            
+            // Check if switching to Python
+            if (newLang === 'python') {
+              // Check protocol first
+              if (isFileProtocol()) {
+                // Show warning and stay on JavaScript
+                showProtocolWarning();
+                // Revert to JavaScript
+                document.getElementById('lang-javascript').checked = true;
+                return;
+              }
+              
+              // On web server - load Pyodide if needed
+              try {
+                await ensurePyodideLoaded(true); // Show loading indicator
+                // Success - switch language
+                currentLanguage = newLang;
+                monaco.editor.setModelLanguage(monacoEditor.getModel(), currentLanguage);
+                monacoEditor.setValue(defaultCode[currentLanguage]);
+                updateIOInstructions(currentLanguage); // Update I/O instruction boxes
+              } catch (error) {
+                // Failed to load Pyodide
+                showResults(`<p style="color: var(--color-error);">❌ Failed to load Python: ${error.message}</p>`);
+                // Revert to JavaScript
+                document.getElementById('lang-javascript').checked = true;
+                currentLanguage = 'javascript';
+              }
+            } else {
+              // Switching to JavaScript - no Pyodide needed
+              hideProtocolWarning();
+              currentLanguage = newLang;
+              monaco.editor.setModelLanguage(monacoEditor.getModel(), currentLanguage);
+              monacoEditor.setValue(defaultCode[currentLanguage]);
+              updateIOInstructions(currentLanguage); // Update I/O instruction boxes
+            }
+          }
+        });
+      });
+    });
+
+    // ============================================
+    // Keyboard Shortcuts
+    // ============================================
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        e.preventDefault();
+        if (!runBtn.disabled) {
+          onRunTests();
+        }
+      }
+    });
+
+    // Timer keyboard shortcut: Alt+T to toggle Start/Pause
+    document.addEventListener('keydown', (e) => {
+      const isAltT = e.altKey && (e.key.toLowerCase() === 't');
+      if (isAltT) {
+        e.preventDefault();
+        if (timer.state === 'running') pauseTimer(); else startTimer();
+      }
+    });
+
+    // ============================================
+    // Main Test Runner
+    // ============================================
+    runBtn.addEventListener('click', onRunTests);
+
+    async function onRunTests() {
+      const code = monacoEditor.getValue();
+      
+      // Show loading state
+      runBtn.disabled = true;
+      runBtn.classList.add('btn-loading');
+      progressContainer.style.display = 'block';
+      
+      showResults('<p class="text-muted">⏳ Running tests...</p>');
+
+      let allTestsPassed = true;
+      let testResults = [];
+
+      for (let i = 0; i < testCases.length; i++) {
+        const testCase = testCases[i];
+        let result = {
+          id: i + 1,
+          input: testCase.input,
+          passed: false,
+          output: '',
+          expected: testCase.expectedOutput,
+          error: null
+        };
+
+        try {
+          if (currentLanguage === 'python') {
+            result.output = await runPythonTest(code, testCase.input);
+          } else if (currentLanguage === 'javascript') {
+            result.output = await runJavaScriptTest(code, testCase.input);
+          }
+
+          // Normalize whitespace for comparison
+          const normalizedOutput = result.output.trim().replace(/\r\n/g, '\n');
+          const normalizedExpected = testCase.expectedOutput.trim().replace(/\r\n/g, '\n');
+
+          if (normalizedOutput === normalizedExpected) {
+            result.passed = true;
+          } else {
+            allTestsPassed = false;
+          }
+
+        } catch (error) {
+          result.error = error.message || String(error);
+          allTestsPassed = false;
+        }
+        
+        testResults.push(result);
+        updateProgress(testResults);
+        displayResults(testResults, false);
+      }
+      
+      // Show final results
+      displayResults(testResults, true);
+      
+      // Celebrate if all tests passed
+      if (allTestsPassed) {
+        showSuccessCelebration();
+      }
+      
+      runBtn.disabled = false;
+      runBtn.classList.remove('btn-loading');
+    }
+
+    // ============================================
+    // Python Test Execution
+    // ============================================
+    async function runPythonTest(code, input) {
+      // Ensure Pyodide is loaded (should already be loaded if Python is selected)
+      if (!pyodideLoaded) {
+        await ensurePyodideLoaded(true);
+      }
+      
+      if (!pyodide) {
+        throw new Error('Pyodide failed to load.');
+      }
+      
+      const inputs = (input || "").split('\n');
+      let inputIndex = 0;
+      pyodide.setStdin({ 
+        stdin: () => {
+          if (inputIndex < inputs.length) {
+            return inputs[inputIndex++];
+          }
+          return null;
+        }
+      });
+
+      let capturedOutput = "";
+      pyodide.setStdout({ batched: (str) => capturedOutput += str + "\n" });
+      pyodide.setStderr({ batched: (str) => capturedOutput += `[ERROR] ${str}\n` });
+      
+      try {
+        await pyodide.runPythonAsync(code);
+        return capturedOutput;
+      } catch (error) {
+        throw new Error(capturedOutput + `\n[RUNTIME ERROR] ${error.message}`);
+      }
+    }
+
+    // ============================================
+    // JavaScript Test Execution
+    // ============================================
+    function runJavaScriptTest(code, input) {
+      return new Promise((resolve, reject) => {
+        const workerCode = `
+          self.onmessage = function(e) {
+            const { code, input } = e.data;
+            const inputs = (input || "").split('\\n');
+            let inputIndex = 0;
+            
+            const readln = () => {
+              if (inputIndex < inputs.length) {
+                return inputs[inputIndex++];
+              }
+              return null;
+            };
+
+            let capturedOutput = "";
+            const console = {
+              log: (...args) => {
+                capturedOutput += args.map(String).join(' ') + '\\n';
+              }
+            };
+            
+            try {
+              new Function('console', 'readln', code)(console, readln);
+              self.postMessage({ output: capturedOutput.trim() });
+            } catch (error) {
+              self.postMessage({ error: error.message });
+            }
+          }
+        `;
+        
+        const blob = new Blob([workerCode], { type: 'application/javascript' });
+        const worker = new Worker(URL.createObjectURL(blob));
+
+        const timeout = setTimeout(() => {
+          worker.terminate();
+          reject(new Error('⏱️ Test timed out (5 seconds). Possible infinite loop.'));
+        }, 5000);
+
+        worker.onmessage = (e) => {
+          clearTimeout(timeout);
+          worker.terminate();
+          if (e.data.error) {
+            reject(new Error(e.data.error));
+          } else {
+            resolve(e.data.output);
+          }
+        };
+
+        worker.onerror = (e) => {
+          clearTimeout(timeout);
+          worker.terminate();
+          reject(new Error(`[Worker Error] ${e.message}`));
+        };
+
+        worker.postMessage({ code: code, input: input });
+      });
+    }
+
+    // ============================================
+    // Progress Bar Update
+    // ============================================
+    function updateProgress(results) {
+      const totalTests = testCases.length;
+      const passedTests = results.filter(r => r.passed).length;
+      const percentage = (passedTests / totalTests) * 100;
+      
+      progressFill.style.width = `${percentage}%`;
+      progressText.textContent = `${passedTests}/${totalTests} passed`;
+    }
+
+    // ============================================
+    // Display Test Results
+    // ============================================
+    function displayResults(results, isFinal) {
+      let html = '<div class="results-header">📋 Test Results</div>';
+      
+      results.forEach(result => {
+        const statusClass = result.passed ? 'passed' : 'failed';
+        const statusIcon = result.passed ? '✅' : '❌';
+        const statusText = result.passed ? 'Passed' : 'Failed';
+        
+        html += `<div class="test-result ${statusClass}">`;
+        html += `  <div class="test-result-header">`;
+        html += `    ${statusIcon} Test Case ${result.id}: ${statusText}`;
+        html += `  </div>`;
+        
+        if (!result.passed) {
+          html += `<div class="test-result-details">`;
+          
+          // Show input
+          html += `<div class="test-input">`;
+          html += `  <div class="test-input-label">Input:</div>`;
+          html += `  <div class="test-input-value">${escapeHtml(result.input)}</div>`;
+          html += `</div>`;
+          
+          // Show side-by-side comparison
+          html += `<div class="test-comparison">`;
+          html += `  <div class="test-output-column your-output">`;
+          html += `    <div class="test-output-label">Your Output</div>`;
+          html += `    <div class="test-output-value">${escapeHtml(result.output || '(no output)')}</div>`;
+          html += `  </div>`;
+          html += `  <div class="test-output-column expected-output">`;
+          html += `    <div class="test-output-label">Expected Output</div>`;
+          html += `    <div class="test-output-value">${escapeHtml(result.expected)}</div>`;
+          html += `  </div>`;
+          html += `</div>`;
+          
+          // Friendly error message
+          const friendlyMsg = getFriendlyMessage(result);
+          html += `<div class="friendly-message">💬 ${friendlyMsg}</div>`;
+          
+          html += `</div>`;
+        }
+        
+        html += `</div>`;
+      });
+      
+      resultsContainer.innerHTML = html;
+    }
+
+    // ============================================
+    // Helper Functions
+    // ============================================
+    function showResults(html) {
+      resultsContainer.innerHTML = '<div class="results-header">📋 Test Results</div>' + html;
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function getFriendlyMessage(result) {
+      if (result.error) {
+        if (result.error.includes('timeout')) {
+          return 'Your code took too long to run. Check for infinite loops!';
+        } else if (result.error.includes('RUNTIME ERROR') || result.error.includes('ERROR')) {
+          return 'Your code had an error. Check the error message above.';
+        }
+        return result.error;
+      }
+      
+      const yourOut = (result.output || '').trim();
+      const expected = result.expected.trim();
+      
+      if (yourOut === '') {
+        return 'Your code didn\'t print anything. Did you forget to print the result?';
+      }
+      
+      return `Your answer was "${yourOut}", but we expected "${expected}". Double-check your logic!`;
+    }
+
+    function resetProblem() {
+      // Reset editor to default starter code for current language
+      if (monacoEditor && currentLanguage && defaultCode[currentLanguage]) {
+        monacoEditor.setValue(defaultCode[currentLanguage]);
+      }
+      // Reset results area
+      resultsContainer.innerHTML = `
+          <div class="results-header">
+            📋 Test Results
+          </div>
+          <p class="text-muted">Click \"Run Tests\" to check your solution.</p>
+      `;
+      // Reset progress bar
+      progressContainer.style.display = 'none';
+      progressFill.style.width = '0%';
+      progressText.textContent = '0/0 passed';
+      // Reset timer
+      resetTimer();
+      // Focus editor
+      setTimeout(() => {
+        const editorContainer = document.getElementById('editor-container');
+        if (editorContainer) editorContainer.focus();
+      }, 0);
+    }
+
+    function showSuccessCelebration() {
+      // Auto-stop timer if running
+      if (timer.state === 'running') {
+        pauseTimer();
+      }
+
+      const elapsedMs = getElapsedMs();
+      const hasTime = elapsedMs > 0;
+      const estimate = parseTimeEstimate();
+      const cmp = hasTime ? compareElapsedToEstimate(elapsedMs, estimate) : 'unknown';
+      const elapsedText = hasTime ? `You finished in ${formatTime(elapsedMs)}.` : 'Time not recorded.';
+      let compareText = '';
+      if (hasTime && estimate) {
+        if (cmp === 'under') compareText = 'Faster than the estimate — nice!';
+        else if (cmp === 'within') compareText = 'Within the expected time.';
+        else if (cmp === 'over') compareText = 'A bit over the estimate — keep practicing!';
+      }
+      // Confetti animation
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+        
+        setTimeout(() => {
+          confetti({
+            particleCount: 50,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 }
+          });
+        }, 200);
+        
+        setTimeout(() => {
+          confetti({
+            particleCount: 50,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 }
+          });
+        }, 400);
+      }
+      
+      // Success message
+      const successHtml = `
+        <div class=\"success-celebration\">
+          <h2>🎉 Congratulations! 🎉</h2>
+          <p>All test cases passed! You've solved the problem correctly!</p>
+          <p>${elapsedText} ${compareText}</p>
+          <div class=\"success-actions\">
+            <button class=\"btn btn-success\" id=\"reset-try-again\">↻ Reset and Try Again</button>
+          </div>
+        </div>
+      `;
+      
+      resultsContainer.innerHTML = successHtml;
+      const resetBtn = document.getElementById('reset-try-again');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          resetProblem();
+        });
+      }
+    }
+
+  </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>
