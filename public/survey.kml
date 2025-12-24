@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Survey Plot</name>
+    <Placemark>
+      <name>Boundary</name>
+      <Style>
+        <LineStyle>
+          <color>ff0000ff</color>
+          <width>3</width>
+        </LineStyle>
+      </Style>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          121.0386389,14.6541947,0
+          121.0389740,14.6534740,0
+          121.0392700,14.6527360,0
+          121.0395300,14.6519850,0
+          121.0397480,14.6512210,0
+          121.0399170,14.6504460,0
+          121.0400570,14.6496660,0
+          121.0401520,14.6488800,0
+          121.0422390,14.6493090,0
+          121.0408730,14.6530160,0
+          121.0386389,14.6541947,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>
