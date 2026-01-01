@@ -1,31 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
-    <name>Survey Plot</name>
+    <name>Lot RP 3-B-4-B-L-B (Original Geometry)</name>
+
     <Placemark>
-      <name>Boundary</name>
+      <name>Lot RP 3-B-4-B-L-B</name>
+      <description>
+        Original geometry plotted from Proclamation No. 616 (1969).
+        Visualization only. Not for legal or cadastral use.
+      </description>
+
       <Style>
         <LineStyle>
           <color>ff0000ff</color>
-          <width>3</width>
+          <width>2</width>
         </LineStyle>
+        <PolyStyle>
+          <color>400000ff</color>
+        </PolyStyle>
       </Style>
-      <LineString>
-        <tessellate>1</tessellate>
-        <coordinates>
-					121.038611,14.653611,0
-					121.038273,14.652879,0
-					121.037975,14.652156,0
-					121.037714,14.651442,0
-					121.037490,14.650736,0
-					121.037302,14.650040,0
-					121.037151,14.649353,0
-					121.037036,14.648675,0
-					121.039148,14.649602,0
-					121.037667,14.653344,0
-					121.038611,14.653611,0
-        </coordinates>
-      </LineString>
+
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              121.067000,14.651000,0
+              121.066200,14.651700,0
+              121.065500,14.652400,0
+              121.064900,14.653100,0
+              121.064500,14.653800,0
+              121.064200,14.654400,0
+              121.064000,14.655000,0
+              121.064800,14.656600,0
+              121.067300,14.654900,0
+              121.067000,14.651000,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
     </Placemark>
+
   </Document>
 </kml>
