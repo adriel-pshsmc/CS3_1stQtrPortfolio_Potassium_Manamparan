@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
-    <name>Lot RP 3-B-4-B-L-B (Original Geometry)</name>
+    <name>Lot RP 3-B-4-B-L-B (Original Geometry, P8 Anchored)</name>
 
     <Placemark>
       <name>Lot RP 3-B-4-B-L-B</name>
       <description>
-        Original geometry plotted from Proclamation No. 616 (1969).
+        Original geometry from Proclamation No. 616 (1969).
+        Translated so that Point 8 is fixed at
+        14°39′13″ N, 121°02′17″ E.
         Visualization only. Not for legal or cadastral use.
       </description>
 
@@ -24,21 +26,21 @@
         <outerBoundaryIs>
           <LinearRing>
             <coordinates>
-              121.067000,14.651000,0
-              121.066200,14.651700,0
-              121.065500,14.652400,0
-              121.064900,14.653100,0
-              121.064500,14.653800,0
-              121.064200,14.654400,0
-              121.064000,14.655000,0
-              121.064800,14.656600,0
-              121.067300,14.654900,0
-              121.067000,14.651000,0
+              121.040256,14.650011,0
+              121.039456,14.650711,0
+              121.038756,14.651411,0
+              121.038156,14.652111,0
+              121.037756,14.652811,0
+              121.037456,14.653411,0
+              121.037256,14.654011,0
+              121.038056,14.653611,0
+              121.040556,14.651911,0
+              121.040256,14.650011,0
             </coordinates>
           </LinearRing>
         </outerBoundaryIs>
       </Polygon>
-    </Placemark>
 
+    </Placemark>
   </Document>
 </kml>
